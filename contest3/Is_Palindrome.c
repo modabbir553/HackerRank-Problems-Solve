@@ -1,23 +1,26 @@
 #include <stdio.h>
 #include <string.h>
+
 int is_palindrome(char str[])
 {
-
-    char str2[strlen(str)];
-
-    strcpy(str2, str);
-
-    int c = strcmp(str, strrev(str2));
-    return c;
+    int len = strlen(str);
+    for (int i = 0; i < len / 2; i++)
+    {
+        if (str[i] != str[len - i - 1])
+        {
+            return 0;
+        }
+    }
+    return 1;
 }
 
 int main()
 {
     char str[1001];
-    scanf("%s", &str);
+    scanf("%s", str);
 
     int result = is_palindrome(str);
-    if (result == 0)
+    if (result == 1)
     {
         printf("Palindrome");
     }
@@ -25,5 +28,5 @@ int main()
     {
         printf("Not Palindrome");
     }
-    return 0;
+return 0;
 }
