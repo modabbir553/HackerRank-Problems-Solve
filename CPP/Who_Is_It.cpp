@@ -59,7 +59,7 @@ int main()
         }
 
         cout << hightest->id << " " << hightest->name << " "
-             << hightest->section << " " << hightest->total_marks << "\n";
+            << hightest->section << " " << hightest->total_marks << "\n";
 
         for (int i = 0; i < 3; i++)
             delete students[i];
