@@ -41,25 +41,25 @@ int main()
             students[i] = new Student_info(id, name, section, marks);
         }
 
-        Student_info *topper = students[0];
+        Student_info *hightest = students[0];
 
         for (int i = 1; i < 3; i++)
         {
-            if (students[i]->total_marks > topper->total_marks)
+            if (students[i]->total_marks > hightest->total_marks)
             {
-                topper = students[i];
+                hightest = students[i];
             }
-            else if (students[i]->total_marks == topper->total_marks)
+            else if (students[i]->total_marks == hightest->total_marks)
             {
-                if (students[i]->id < topper->id)
+                if (students[i]->id < hightest->id)
                 {
-                    topper = students[i];
+                    hightest = students[i];
                 }
             }
         }
 
-        cout << topper->id << " " << topper->name << " "
-             << topper->section << " " << topper->total_marks << "\n";
+        cout << hightest->id << " " << hightest->name << " "
+             << hightest->section << " " << hightest->total_marks << "\n";
 
         for (int i = 0; i < 3; i++)
             delete students[i];
