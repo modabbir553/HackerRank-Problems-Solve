@@ -7,26 +7,63 @@ public:
     int id;
     string name;
     char section;
-    double marks;
+    int total_marks;
 
-    Student_info(int s_id, string s_name, char s_section, double s_mark)
+    Student_info(int id, string name, char section, int total_marks)
     {
-        id = s_id;
-        name = s_name;
-        section = s_section;
-        marks = s_mark;
+        this->id = id;
+        this->name = name;
+        this->section = section;
+        this->total_marks = total_marks;
     }
 };
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    int t;
-    cin >> t;
-    for(int i = 0; i<t; i++){
-        Student_info obj1()
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int T;
+    cin >> T;
+
+    while (T--)
+    {
+
+        Student_info *students[3];
+
+        for (int i = 0; i < 3; i++)
+        {
+            int id, marks;
+            string name;
+            char section;
+            cin >> id >> name >> section >> marks;
+
+            students[i] = new Student_info(id, name, section, marks);
+        }
+
+        Student_info *topper = students[0];
+
+        for (int i = 1; i < 3; i++)
+        {
+            if (students[i]->total_marks > topper->total_marks)
+            {
+                topper = students[i];
+            }
+            else if (students[i]->total_marks == topper->total_marks)
+            {
+                if (students[i]->id < topper->id)
+                {
+                    topper = students[i];
+                }
+            }
+        }
+
+        cout << topper->id << " " << topper->name << " "
+             << topper->section << " " << topper->total_marks << "\n";
+
+        for (int i = 0; i < 3; i++)
+            delete students[i];
     }
+
     return 0;
 }
