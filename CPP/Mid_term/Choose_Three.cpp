@@ -24,7 +24,7 @@ int main()
         for (int j = n - 1; j >= 0; j--)
         {
 
-            temp = temp + ar[j];
+            temp = result + ar[j];
             if (temp <= s)
             {
                 result = temp;
